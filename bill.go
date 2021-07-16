@@ -23,15 +23,6 @@ func (b *bill) addItem(name string, price float64) {
 	b.items[name] = price
 }
 
-// update tip
-// pointer Reciever
-func (b *bill) updateTip(tip float64) {
-	// we have dereference the pointer to change the value
-	// but go will do that for us in sturct so here we dont have to use astrick *
-	// (*b).tip = tip
-	b.tip = tip
-}
-
 // format the bill
 func (b *bill) format() string {
 	fs := "Bill breakdown:\n"
@@ -50,4 +41,10 @@ func (b *bill) format() string {
 	fs += fmt.Sprintf("%-25v ...$%0.2f", "total:", total+b.tip)
 
 	return fs
+}
+
+// update tip
+func (b *bill) updateTip(tip float64) {
+	(*b).tip = tip
+	// b.tip = tip
 }
